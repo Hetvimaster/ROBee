@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ScanQuest — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="shell admin-shell" style="max-width:860px;">
+  <div class="topbar">
+    <div class="mark">SCAN<span>QUEST</span></div>
+    <div class="stamp">ADMIN</div>
+  </div>
+
+  <div class="mode-banner">
+    Changes here save to <strong>this browser's test mode</strong> instantly, so you can preview at
+    <code>index.html</code> right away. To make a hunt live for everyone, click
+    <strong>Download hunt.json</strong> and replace <code>data/hunt.json</code> in the project before
+    you deploy (or re-deploy after replacing it).
+  </div>
+
+  <section class="case-card" style="margin-bottom:1.6rem;">
+    <div class="eyebrow">Hunt settings</div>
+    <div class="field-grid">
+      <div>
+        <label for="f-title">Hunt title</label>
+        <input type="text" id="f-title" placeholder="ScanQuest" />
+      </div>
+      <div>
+        <label for="f-intro">Briefing text (shown on the start screen)</label>
+        <textarea id="f-intro" placeholder="A physical scavenger hunt..."></textarea>
+      </div>
+      <div>
+        <label for="f-win-title">Win screen title</label>
+        <input type="text" id="f-win-title" placeholder="Case Closed" />
+      </div>
+      <div>
+        <label for="f-win-message">Winning message</label>
+        <textarea id="f-win-message" placeholder="You found every marker..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section class="eyebrow" style="margin-bottom:0.8rem;">Clues, in order</section>
+  <p class="helper-text" style="margin-top:-0.6rem; margin-bottom:1rem;">
+    Each marker's clue is shown right after that marker is scanned, and should point to where the
+    <em>next</em> marker is hidden. The last clue's marker triggers the win screen.
+  </p>
+  <div id="stops-list"></div>
+  <button class="btn-ghost" id="btn-add-stop">+ Add marker</button>
+
+  <hr class="section-divider" />
+
+  <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-bottom:1rem;">
+    <button class="btn-primary" id="btn-save">Save to test mode</button>
+    <button class="btn-ghost" id="btn-download">Download hunt.json</button>
+    <button class="btn-ghost" id="btn-load-file">Load hunt.json…</button>
+    <button class="btn-ghost" id="btn-load-live">Reload from data/hunt.json</button>
+    <button class="btn-danger" id="btn-clear-test">Clear test override</button>
+    <input type="file" id="file-input" accept="application/json" style="display:none;" />
+  </div>
+
+  <hr class="section-divider" />
+
+  <section id="qr-section">
+    <div class="eyebrow">Printable markers</div>
+    <p class="helper-text" style="margin-top:-0.4rem;">
+      Print or screenshot these and place them physically at each stop. Each marker's QR code encodes
+      that stop's code — scanning it is what checks the player in.
+    </p>
+    <div style="margin:0.8rem 0 1.2rem;">
+      <button class="btn-ghost btn-small" id="btn-print">Print all markers</button>
+    </div>
+    <div class="qr-grid" id="print-area"></div>
+  </section>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

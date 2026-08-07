@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>ScanQuest — Live Hunt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="shell">
+  <div class="topbar">
+    <div class="mark">SCAN<span>QUEST</span></div>
+    <div class="stamp" id="topbar-stamp">LIVE HUNT</div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="screen active" id="screen-intro">
+    <div class="eyebrow">Briefing</div>
+    <h1 class="hunt-title" id="hunt-title">Loading…</h1>
+    <p class="hunt-blurb" id="hunt-blurb"></p>
+    <p class="progress-note" id="resume-note" style="display:none;"></p>
+    <button class="btn-primary" id="btn-start">Start Hunt</button>
+    <button class="btn-ghost btn-small" id="btn-reset" style="display:none;">Reset progress</button>
+  </section>
+
+  <!-- SCANNER -->
+  <section class="screen" id="screen-scan">
+    <div class="eyebrow" id="scan-eyebrow">Marker 1 of 3</div>
+    <div class="viewfinder-wrap">
+      <div id="qr-reader"></div>
+      <div class="bracket-frame">
+        <span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span>
+      </div>
+      <div class="scan-line"></div>
+    </div>
+    <p class="scan-status" id="scan-status">Point the camera at the marker.</p>
+
+    <div class="manual-entry">
+      <input type="text" id="manual-code" placeholder="or type marker code manually" />
+      <button class="btn-ghost btn-small" id="btn-manual-submit">Check</button>
+    </div>
+
+    <div class="hunt-footer">
+      <button class="btn-ghost btn-small" id="btn-quit">Quit to briefing</button>
+      <span class="helper-text" id="found-count"></span>
+    </div>
+  </section>
+
+  <!-- WIN -->
+  <section class="screen" id="screen-win">
+    <div class="win-badge">SOLVED</div>
+    <h1 id="win-title">Case Closed</h1>
+    <p id="win-message"></p>
+    <button class="btn-primary" id="btn-play-again">Reset &amp; play again</button>
+  </section>
+</div>
+
+<!-- Clue popup -->
+<div class="overlay" id="clue-overlay">
+  <div class="field-note">
+    <div class="stamp-num" id="clue-num">1</div>
+    <div class="fn-eyebrow">Field note recovered</div>
+    <h2>Marker confirmed</h2>
+    <div class="clue-text" id="clue-text"></div>
+    <button class="btn-primary" id="btn-clue-continue">Continue</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

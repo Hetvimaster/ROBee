@@ -1,0 +1,20 @@
+{
+  "title": "ScanQuest",
+  "intro": "A physical scavenger hunt. Find each marker, scan it, follow the clue.",
+  "winTitle": "Case Closed",
+  "winMessage": "You found every marker and cracked the whole route. Nice work, agent.",
+  "stops": [
+    {
+      "qrValue": "SCANQUEST-STOP-1",
+      "clue": "This is the first clue. Replace me in the admin panel with a real clue that points to where the next marker is hidden."
+    },
+    {
+      "qrValue": "SCANQUEST-STOP-2",
+      "clue": "This is the second clue. Keep going — edit these in admin.html."
+    },
+    {
+      "qrValue": "SCANQUEST-STOP-3",
+      "clue": "This is the final clue before the win screen."
+    }
+  ]
+}
